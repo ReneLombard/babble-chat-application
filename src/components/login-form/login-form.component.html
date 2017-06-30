@@ -1,0 +1,27 @@
+<!-- Generated template for the LoginFormComponent component -->
+ <form #loginForm= "ngForm" novalidate>
+ <ion-card class = "loginForm__buttons">
+     <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="email"  [(ngModel)]="account.email" name="email" #email="ngModel" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></ion-input>
+    </ion-item>
+    <div padding *ngIf="email.invalid && email.dirty">
+      <span class="global__input-error">Email address is not valid</span>
+      </div>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type ="password" [(ngModel)]= "account.password" name="password" #password="ngModel" required pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></ion-input> 
+    </ion-item>
+    <div padding *ngIf="password.invalid && password.dirty">
+      <span class="global__input-error">Password should contain at least one uppercase character and must be at least 6 characters long</span>
+    </div>
+    <ion-row>
+      <div>
+        <button ion-button (click)="NavigateToRegisterPage()" color="secondary">Register</button>
+        <button ion-button (click)="Login()" [disabled]= "loginForm.invalid">Login</button>
+      </div>
+   
+    </ion-row>
+    
+  </ion-card>
+</form>
